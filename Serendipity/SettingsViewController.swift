@@ -16,13 +16,21 @@ class SettingsViewController: UIViewController {
     @IBOutlet weak var switchState: UISwitch!
     @IBOutlet weak var levelSelectedText: UILabel!
     weak var delegate: SettingsDelegate?
-    var levelSelected:Bool = true
+    var levelSelected:Bool = false
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        levelSelected = UserDefaults.standard.bool(forKey: "identifier")
+        switchState.isOn = levelSelected
+        if (levelSelected) {
+            levelSelectedText.text = "Show levels"
+        } else {
+            levelSelectedText.text = "Hide levels"
+        }
         self.showAnimate()
     }
     
@@ -32,6 +40,10 @@ class SettingsViewController: UIViewController {
     }
     
     @IBAction func toggleLevels(_ sender: UISwitch) {
+        let userDefaults = UserDefaults.standard
+        userDefaults.set(switchState.isOn, forKey:"identifier")
+        userDefaults.synchronize()
+        
         if switchState.isOn {
             levelSelected = true
             levelSelectedText.text = "Show levels"

@@ -22,6 +22,7 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
     var LevelsData = [[String]]()
     var LevelsHeading = [String]()
     var DiceRollingSound: AVAudioPlayer?
+    var levelSelected = true
     
     
     override func viewDidLoad() {
@@ -37,6 +38,14 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
 
     override func viewWillAppear(_ animated: Bool) {
         levelNumber = LevelClass.shared.getLevel()
+        levelSelected = UserDefaults.standard.bool(forKey: "identifier")
+        if (levelSelected) {
+            bOptionsText.isHidden = false
+            levelNumber = LevelClass.shared.getLevel()
+            bOptionsText.setTitle((LevelsHeading[levelNumber!]), for: .normal)
+        } else {
+            bOptionsText.isHidden = true
+        }
     }
     
     func sendCompleted(done: Bool) {
@@ -45,7 +54,8 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
     }
     
     func levelStatus(done: Bool) {
-        if (done) {
+        levelSelected = done
+        if (levelSelected) {
             bOptionsText.isHidden = false
             levelNumber = LevelClass.shared.getLevel()
             bOptionsText.setTitle((LevelsHeading[levelNumber!]), for: .normal)
