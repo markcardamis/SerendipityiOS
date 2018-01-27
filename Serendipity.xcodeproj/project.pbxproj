@@ -17,6 +17,8 @@
 		991A377F2019CACF009C0AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 991A377E2019CACF009C0AA4 /* Assets.xcassets */; };
 		991A37822019CACF009C0AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991A37802019CACF009C0AA4 /* LaunchScreen.storyboard */; };
 		99D00994201C3430004EB2FD /* shake_dice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99D00993201C3430004EB2FD /* shake_dice.mp3 */; };
+		99D0099A201C6BB9004EB2FD /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99D00999201C6BB9004EB2FD /* Settings.storyboard */; };
+		99D0099C201C6BF6004EB2FD /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99D0099B201C6BF6004EB2FD /* SettingsViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +34,8 @@
 		991A37812019CACF009C0AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		991A37832019CACF009C0AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99D00993201C3430004EB2FD /* shake_dice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shake_dice.mp3; path = Assets.xcassets/shake_dice.mp3; sourceTree = "<group>"; };
+		99D00999201C6BB9004EB2FD /* Settings.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Settings.storyboard; sourceTree = "<group>"; };
+		99D0099B201C6BF6004EB2FD /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 				99122C4F2019E9B300F6CB90 /* OptionsViewController.swift */,
 				99122C51201C049E00F6CB90 /* LevelClass.swift */,
 				99122C492019E1AD00F6CB90 /* DataProvider.swift */,
+				99D00999201C6BB9004EB2FD /* Settings.storyboard */,
+				99D0099B201C6BF6004EB2FD /* SettingsViewController.swift */,
 			);
 			path = Serendipity;
 			sourceTree = "<group>";
@@ -141,6 +147,7 @@
 				991A37822019CACF009C0AA4 /* LaunchScreen.storyboard in Resources */,
 				99122C4C2019E63F00F6CB90 /* Options.storyboard in Resources */,
 				991A377F2019CACF009C0AA4 /* Assets.xcassets in Resources */,
+				99D0099A201C6BB9004EB2FD /* Settings.storyboard in Resources */,
 				99D00994201C3430004EB2FD /* shake_dice.mp3 in Resources */,
 				991A377D2019CACF009C0AA4 /* Main.storyboard in Resources */,
 			);
@@ -158,6 +165,7 @@
 				991A377A2019CACF009C0AA4 /* ViewController.swift in Sources */,
 				991A37782019CACF009C0AA4 /* AppDelegate.swift in Sources */,
 				99122C502019E9B300F6CB90 /* OptionsViewController.swift in Sources */,
+				99D0099C201C6BF6004EB2FD /* SettingsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

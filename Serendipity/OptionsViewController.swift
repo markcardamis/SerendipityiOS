@@ -5,7 +5,7 @@
 //  Created by Mark Cardamis on 25/1/18.
 //  Copyright © 2018 Mark Cardamis. All rights reserved.
 //
-protocol TodoDelegate : class{
+protocol LevelsDelegate : class{
     func sendCompleted(done: Bool)
 }
 
@@ -16,7 +16,7 @@ class OptionsViewController: UIViewController {
     var levelNumber:Int?
     var LevelsHeading = [String]()
     var LevelsData = [[String]]()
-    weak var delegate: TodoDelegate?
+    weak var delegate: LevelsDelegate?
 
     @IBOutlet weak var buttonUp: UIButton!
     @IBOutlet weak var buttonDown: UIButton!
@@ -107,8 +107,8 @@ class OptionsViewController: UIViewController {
         }, completion:{(finished : Bool)  in
             if (finished)
             {
-                self.view.removeFromSuperview()
                 self.delegate?.sendCompleted(done: true)
+                self.view.removeFromSuperview()
             }
         });
     }

@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, TodoDelegate {
+class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
 
     @IBOutlet weak var DiceImage: UIImageView!
     @IBOutlet weak var bOptionsText: UIButton!
@@ -42,6 +42,16 @@ class ViewController: UIViewController, TodoDelegate {
     func sendCompleted(done: Bool) {
         levelNumber = LevelClass.shared.getLevel()
         bOptionsText.setTitle((LevelsHeading[levelNumber!]), for: .normal)
+    }
+    
+    func levelStatus(done: Bool) {
+        if (done) {
+            bOptionsText.isHidden = false
+            levelNumber = LevelClass.shared.getLevel()
+            bOptionsText.setTitle((LevelsHeading[levelNumber!]), for: .normal)
+        } else {
+            bOptionsText.isHidden = true
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -84,6 +94,14 @@ class ViewController: UIViewController, TodoDelegate {
 
     }
     
+    @IBAction func bInfo(_ sender: UIButton) {
+        let popOverVC = UIStoryboard(name: "Settings", bundle: nil).instantiateViewController(withIdentifier: "SettingsViewController") as! SettingsViewController
+        popOverVC.delegate = self
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
     
     func startTimer() {
         diceRolling = true
