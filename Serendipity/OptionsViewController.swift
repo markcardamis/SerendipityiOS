@@ -5,23 +5,30 @@
 //  Created by Mark Cardamis on 25/1/18.
 //  Copyright © 2018 Mark Cardamis. All rights reserved.
 //
+protocol TodoDelegate : class{
+    func sendCompleted(done: Bool)
+}
 
 import UIKit
 
 class OptionsViewController: UIViewController {
     
-    var level:Int = 0
+    var levelNumber:Int?
     var LevelsData = [[String]]()
+    weak var delegate: TodoDelegate?
 
     @IBOutlet weak var levelLabel: UILabel!
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        LevelsData = DataProvider().loadInfo()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        levelNumber = LevelClass.shared.getLevel()
+        showLevelText(levelNumber: levelNumber!)
         self.showAnimate()
-        let theDataHolding = DataProvider()
-        LevelsData = theDataHolding.loadInfo()
-        showLevelText(levelNumber: level)
-
     }
 
     override func didReceiveMemoryWarning() {
@@ -30,18 +37,13 @@ class OptionsViewController: UIViewController {
     }
 
     @IBAction func levelUp(_ sender: UIButton) {
-        if (level < 4) {
-            level += 1
-            showLevelText(levelNumber: level)
-        }
-
+        levelNumber = LevelClass.shared.incrementLevel()
+        showLevelText(levelNumber: levelNumber!)
     }
+    
     @IBAction func levelDown(_ sender: UIButton) {
-        if (level > 0) {
-            level -= 1
-            showLevelText(levelNumber: level)
-        }
-        
+        levelNumber = LevelClass.shared.decrementLevel()
+        showLevelText(levelNumber: levelNumber!)
     }
     
     func showLevelText (levelNumber:Int) {
@@ -76,6 +78,7 @@ class OptionsViewController: UIViewController {
             if (finished)
             {
                 self.view.removeFromSuperview()
+                self.delegate?.sendCompleted(done: true)
             }
         });
     }

@@ -10,17 +10,20 @@
 		99122C4A2019E1AD00F6CB90 /* DataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99122C492019E1AD00F6CB90 /* DataProvider.swift */; };
 		99122C4C2019E63F00F6CB90 /* Options.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 99122C4B2019E63F00F6CB90 /* Options.storyboard */; };
 		99122C502019E9B300F6CB90 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99122C4F2019E9B300F6CB90 /* OptionsViewController.swift */; };
+		99122C52201C049E00F6CB90 /* LevelClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 99122C51201C049E00F6CB90 /* LevelClass.swift */; };
 		991A37782019CACF009C0AA4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991A37772019CACF009C0AA4 /* AppDelegate.swift */; };
 		991A377A2019CACF009C0AA4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 991A37792019CACF009C0AA4 /* ViewController.swift */; };
 		991A377D2019CACF009C0AA4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991A377B2019CACF009C0AA4 /* Main.storyboard */; };
 		991A377F2019CACF009C0AA4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 991A377E2019CACF009C0AA4 /* Assets.xcassets */; };
 		991A37822019CACF009C0AA4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 991A37802019CACF009C0AA4 /* LaunchScreen.storyboard */; };
+		99D00994201C3430004EB2FD /* shake_dice.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 99D00993201C3430004EB2FD /* shake_dice.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		99122C492019E1AD00F6CB90 /* DataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataProvider.swift; sourceTree = "<group>"; };
 		99122C4B2019E63F00F6CB90 /* Options.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Options.storyboard; sourceTree = "<group>"; };
 		99122C4F2019E9B300F6CB90 /* OptionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		99122C51201C049E00F6CB90 /* LevelClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelClass.swift; sourceTree = "<group>"; };
 		991A37742019CACF009C0AA4 /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		991A37772019CACF009C0AA4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		991A37792019CACF009C0AA4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -28,6 +31,7 @@
 		991A377E2019CACF009C0AA4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		991A37812019CACF009C0AA4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		991A37832019CACF009C0AA4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		99D00993201C3430004EB2FD /* shake_dice.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shake_dice.mp3; path = Assets.xcassets/shake_dice.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,11 +68,13 @@
 				991A37792019CACF009C0AA4 /* ViewController.swift */,
 				991A377B2019CACF009C0AA4 /* Main.storyboard */,
 				991A377E2019CACF009C0AA4 /* Assets.xcassets */,
+				99D00993201C3430004EB2FD /* shake_dice.mp3 */,
 				991A37802019CACF009C0AA4 /* LaunchScreen.storyboard */,
 				991A37832019CACF009C0AA4 /* Info.plist */,
-				99122C492019E1AD00F6CB90 /* DataProvider.swift */,
 				99122C4B2019E63F00F6CB90 /* Options.storyboard */,
 				99122C4F2019E9B300F6CB90 /* OptionsViewController.swift */,
+				99122C51201C049E00F6CB90 /* LevelClass.swift */,
+				99122C492019E1AD00F6CB90 /* DataProvider.swift */,
 			);
 			path = Serendipity;
 			sourceTree = "<group>";
@@ -135,6 +141,7 @@
 				991A37822019CACF009C0AA4 /* LaunchScreen.storyboard in Resources */,
 				99122C4C2019E63F00F6CB90 /* Options.storyboard in Resources */,
 				991A377F2019CACF009C0AA4 /* Assets.xcassets in Resources */,
+				99D00994201C3430004EB2FD /* shake_dice.mp3 in Resources */,
 				991A377D2019CACF009C0AA4 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -146,6 +153,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				99122C52201C049E00F6CB90 /* LevelClass.swift in Sources */,
 				99122C4A2019E1AD00F6CB90 /* DataProvider.swift in Sources */,
 				991A377A2019CACF009C0AA4 /* ViewController.swift in Sources */,
 				991A37782019CACF009C0AA4 /* AppDelegate.swift in Sources */,

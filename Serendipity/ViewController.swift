@@ -7,19 +7,35 @@
 //
 
 import UIKit
+import AVFoundation
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, TodoDelegate {
 
     @IBOutlet weak var DiceImage: UIImageView!
+    @IBOutlet weak var bOptionsText: UIButton!
     
     var timer:Timer? = nil
     var times:Int = 0
     var selectNumber:Int = 0
     var diceRolling = false
+    var levelNumber:Int?
+    var LevelsData = [[String]]()
+    var DiceRollingSound: AVAudioPlayer?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib
+        LevelsData = DataProvider().loadInfo()
+        bOptionsText.layer.cornerRadius = 2
+    }
+    
+
+    override func viewWillAppear(_ animated: Bool) {
+        levelNumber = LevelClass.shared.getLevel()
+    }
+    
+    func sendCompleted(done: Bool) {
+        levelNumber = LevelClass.shared.getLevel()
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,6 +70,7 @@ class ViewController: UIViewController {
     
     @IBAction func bOptions(_ sender: UIButton) {
         let popOverVC = UIStoryboard(name: "Options", bundle: nil).instantiateViewController(withIdentifier: "OptionsViewController") as! OptionsViewController
+        popOverVC.delegate = self
         self.addChildViewController(popOverVC)
         popOverVC.view.frame = self.view.frame
         self.view.addSubview(popOverVC.view)
@@ -73,8 +90,8 @@ class ViewController: UIViewController {
     
     @objc func onTick(timer:Timer){
         times += 1
-        
-        if times > 8 {  // clear the timer after 2 seconds
+    
+        if times > 6 {  // clear the timer after 1.5 seconds
             times = 0
             timer.invalidate()
             diceRolling = false
@@ -88,15 +105,37 @@ class ViewController: UIViewController {
         } else {
             displayRandomImage()
         }
+        
+        if (times == 1) { // play sound after first images loaded
+            playDiceSound()
+        }
     }
     
     func displayRandomImage(){
-        let diceNumber = arc4random_uniform(6) + 1
+        let diceNumber = Int(arc4random_uniform(6) + 1)
         DiceImage.image = UIImage(named: "Dice\(diceNumber)")
+        if (!diceRolling) {
+            bOptionsText.setTitle((LevelsData[levelNumber!][diceNumber-1]), for: .normal)
+        }
     }
     
     func displaySetImage(diceNumber:Int){
         DiceImage.image = UIImage(named: "Dice\(diceNumber)")
+        if (!diceRolling){
+            bOptionsText.setTitle((LevelsData[levelNumber!][diceNumber-1]), for: .normal)
+        }
+    }
+    
+    func playDiceSound() {
+        let path = Bundle.main.path(forResource: "shake_dice.mp3", ofType:nil)!
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            DiceRollingSound = try AVAudioPlayer(contentsOf: url)
+            DiceRollingSound?.play()
+        } catch {
+            // couldn't load file :(
+        }
     }
     
     
