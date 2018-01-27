@@ -20,13 +20,18 @@ class ViewController: UIViewController, TodoDelegate {
     var diceRolling = false
     var levelNumber:Int?
     var LevelsData = [[String]]()
+    var LevelsHeading = [String]()
     var DiceRollingSound: AVAudioPlayer?
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         LevelsData = DataProvider().loadInfo()
+        LevelsHeading = DataProvider().loadInfoHeadings()
         bOptionsText.layer.cornerRadius = 2
+        bOptionsText.titleLabel?.minimumScaleFactor = 0.5
+        bOptionsText.titleLabel?.numberOfLines = 1
+        bOptionsText.titleLabel?.adjustsFontSizeToFitWidth = true
     }
     
 
@@ -36,6 +41,7 @@ class ViewController: UIViewController, TodoDelegate {
     
     func sendCompleted(done: Bool) {
         levelNumber = LevelClass.shared.getLevel()
+        bOptionsText.setTitle((LevelsHeading[levelNumber!]), for: .normal)
     }
 
     override func didReceiveMemoryWarning() {

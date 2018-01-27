@@ -12,6 +12,20 @@ import Foundation
 public class DataProvider {
     
     var Levels = [[String]]()
+    var LevelHeadings = [String]()
+    
+    
+    public func loadInfoHeadings() -> [String]
+    {
+        let levelHeadings = ["Lets play",
+                             "Two left feet",
+                             "Take a chance",
+                             "You did what!",
+                             "It better be love"]
+        
+        return levelHeadings
+    }
+    
     
     public func loadInfo() -> [[String]]
     {
