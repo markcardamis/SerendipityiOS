@@ -24,18 +24,19 @@ class OptionsViewController: UIViewController {
     @IBOutlet weak var buttonPlay: UIButton!
     @IBOutlet weak var imageBackground: UIImageView!
     @IBOutlet weak var levelLabel: UILabel!
-    
-    
+    @IBOutlet weak var levelPageControl: UIPageControl!
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
         LevelsData = DataProvider().loadInfo()
         LevelsHeading = DataProvider().loadInfoHeadings()
-        buttonPlay.layer.cornerRadius = 2
-        imageBackground.layer.cornerRadius = 2
+        buttonPlay.layer.cornerRadius = 3
+        imageBackground.layer.cornerRadius = 3
         buttonUp.imageEdgeInsets=UIEdgeInsetsMake(35, 35, 35, 35);
         buttonDown.imageEdgeInsets=UIEdgeInsetsMake(35, 35, 35, 35);
+        self.levelPageControl.numberOfPages = 5
+        self.levelPageControl.currentPage = 0
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,12 +51,22 @@ class OptionsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    @IBAction func SwipeRight(_ sender: UISwipeGestureRecognizer) {
+        levelNumber = LevelClass.shared.incrementLevel()
+        showLevelText(levelNumber: levelNumber!)
+        showHideLevelButtons()
+    }
     @IBAction func levelUp(_ sender: UIButton) {
         levelNumber = LevelClass.shared.incrementLevel()
         showLevelText(levelNumber: levelNumber!)
         showHideLevelButtons()
     }
     
+    @IBAction func SwiftLeft(_ sender: UISwipeGestureRecognizer) {
+        levelNumber = LevelClass.shared.decrementLevel()
+        showLevelText(levelNumber: levelNumber!)
+        showHideLevelButtons()
+    }
     @IBAction func levelDown(_ sender: UIButton) {
         levelNumber = LevelClass.shared.decrementLevel()
         showLevelText(levelNumber: levelNumber!)
@@ -86,6 +97,8 @@ class OptionsViewController: UIViewController {
             buttonUp.isHidden = false
             buttonDown.isHidden = false
         }
+        self.levelPageControl.currentPage = levelNumber!
+        
         
     }
     

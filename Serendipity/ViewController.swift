@@ -13,6 +13,7 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
 
     @IBOutlet weak var DiceImage: UIImageView!
     @IBOutlet weak var bOptionsText: UIButton!
+    @IBOutlet weak var tapDiceLabel: UILabel!
     
     var timer:Timer? = nil
     var times:Int = 0
@@ -27,12 +28,22 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        let notificationCenter = NotificationCenter.default
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: Notification.Name.UIApplicationWillResignActive, object: nil)
         LevelsData = DataProvider().loadInfo()
         LevelsHeading = DataProvider().loadInfoHeadings()
-        bOptionsText.layer.cornerRadius = 2
+        bOptionsText.layer.cornerRadius = 3
         bOptionsText.titleLabel?.minimumScaleFactor = 0.5
         bOptionsText.titleLabel?.numberOfLines = 1
         bOptionsText.titleLabel?.adjustsFontSizeToFitWidth = true
+    }
+    
+
+    @objc func appMovedToBackground() {
+        LevelClass.shared.level = 0
+        tapDiceLabel.isHidden = false
+        DiceImage.image = UIImage(named: "dice3droll")
+        bOptionsText.setTitle("[Show Options]", for: .normal)
     }
     
 
@@ -115,6 +126,7 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
     
     func startTimer() {
         diceRolling = true
+        tapDiceLabel.isHidden = true
         timer = Timer.scheduledTimer(timeInterval: 0.25 ,
                                      target: self,
                                      selector: (#selector(ViewController.onTick)),
