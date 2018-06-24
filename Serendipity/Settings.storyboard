@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZQO-03-Z6o">
-    <device id="retina4_7" orientation="portrait">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="ZQO-03-Z6o">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -16,32 +16,32 @@
             <objects>
                 <viewController storyboardIdentifier="SettingsViewController" id="ZQO-03-Z6o" customClass="SettingsViewController" customModule="Serendipity" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="2AN-eh-Lbd">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hNE-md-koK">
-                                <rect key="frame" x="300" y="99" width="51" height="31"/>
+                                <rect key="frame" x="335" y="99" width="51" height="31"/>
                                 <color key="onTintColor" cocoaTouchSystemColor="lightTextColor"/>
                                 <connections>
                                     <action selector="toggleLevels:" destination="ZQO-03-Z6o" eventType="valueChanged" id="2l6-ne-cG9"/>
                                 </connections>
                             </switch>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show levels" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2c-BO-msl">
-                                <rect key="frame" x="16" y="104" width="130" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Show dating levels" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2c-BO-msl">
+                                <rect key="frame" x="20" y="104" width="160" height="21"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="wPf-te-lp2"/>
+                                    <constraint firstAttribute="width" constant="160" id="wPf-te-lp2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tY3-jD-GKo">
-                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="20" width="414" height="44"/>
                                 <items>
                                     <navigationItem id="vSg-8C-9dJ">
                                         <barButtonItem key="leftBarButtonItem" style="done" id="MgY-i1-njZ">
                                             <button key="customView" opaque="NO" clipsSubviews="YES" contentMode="scaleAspectFit" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="XGh-5K-ug8">
-                                                <rect key="frame" x="16" y="0.0" width="99" height="44"/>
+                                                <rect key="frame" x="20" y="0.0" width="99" height="44"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="AUZ-lh-jrV"/>
@@ -59,15 +59,36 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help walkthrough" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9PS-h8-10Y">
+                                <rect key="frame" x="20" y="155" width="160" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="CVd-bh-mjE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W4j-pD-5db">
+                                <rect key="frame" x="343" y="148" width="41" height="35"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="19"/>
+                                <state key="normal" title="RUN"/>
+                                <connections>
+                                    <action selector="showWalkthrough:" destination="ZQO-03-Z6o" eventType="touchUpInside" id="i0C-OI-STr"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
                         <constraints>
                             <constraint firstItem="Y2c-BO-msl" firstAttribute="centerY" secondItem="hNE-md-koK" secondAttribute="centerY" id="2BS-Y0-nkx"/>
                             <constraint firstAttribute="trailing" secondItem="tY3-jD-GKo" secondAttribute="trailing" id="8hs-Ac-76L"/>
+                            <constraint firstItem="9PS-h8-10Y" firstAttribute="leading" secondItem="Y2c-BO-msl" secondAttribute="leading" id="Ght-Yu-kEU"/>
+                            <constraint firstItem="9PS-h8-10Y" firstAttribute="top" secondItem="Y2c-BO-msl" secondAttribute="bottom" constant="30" id="Q17-ym-c5I"/>
                             <constraint firstItem="tY3-jD-GKo" firstAttribute="top" secondItem="2AN-eh-Lbd" secondAttribute="topMargin" id="Q9v-jN-Lep"/>
                             <constraint firstAttribute="trailingMargin" secondItem="hNE-md-koK" secondAttribute="trailing" constant="10" id="TEk-R8-ccN"/>
+                            <constraint firstItem="W4j-pD-5db" firstAttribute="trailing" secondItem="hNE-md-koK" secondAttribute="trailing" id="YVV-mA-bv9"/>
                             <constraint firstItem="tY3-jD-GKo" firstAttribute="leading" secondItem="2AN-eh-Lbd" secondAttribute="leading" id="aBi-At-cPn"/>
                             <constraint firstItem="Y2c-BO-msl" firstAttribute="leading" secondItem="2AN-eh-Lbd" secondAttribute="leadingMargin" id="dUd-fm-g8E"/>
+                            <constraint firstItem="W4j-pD-5db" firstAttribute="centerY" secondItem="9PS-h8-10Y" secondAttribute="centerY" id="jbx-GN-NmE"/>
                             <constraint firstItem="Y2c-BO-msl" firstAttribute="top" secondItem="tY3-jD-GKo" secondAttribute="bottom" constant="40" id="jk9-RR-GcG"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="QQy-tX-7LZ"/>

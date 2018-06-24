@@ -9,7 +9,7 @@
 import UIKit
 import AVFoundation
 
-class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
+class ViewController: UIViewController, LevelsDelegate, SettingsDelegate, WalkthroughDelegate {
 
     @IBOutlet weak var DiceImage: UIImageView!
     @IBOutlet weak var bOptionsText: UIButton!
@@ -24,6 +24,7 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
     var LevelsHeading = [String]()
     var DiceRollingSound: AVAudioPlayer?
     var levelSelected = true
+    var walkthroughRun:Bool = false
     
     
     override func viewDidLoad() {
@@ -57,6 +58,12 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
         } else {
             bOptionsText.isHidden = true
         }
+//        walkthroughRun = UserDefaults.standard.bool(forKey: "walkthrough")
+//        if (!walkthroughRun) {
+//            UserDefaults.standard.set(true, forKey:"walkthrough")
+//            UserDefaults.standard.synchronize()
+//            walkThrough((Any).self)
+//        }
     }
     
     func sendCompleted(done: Bool) {
@@ -73,6 +80,13 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
         } else {
             bOptionsText.isHidden = true
         }
+        walkthroughRun = UserDefaults.standard.bool(forKey: "walkthrough")
+        if (!walkthroughRun) {
+            UserDefaults.standard.set(true, forKey:"walkthrough")
+            UserDefaults.standard.synchronize()
+            walkThrough((Any).self)
+        }
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -123,6 +137,16 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate {
         self.view.addSubview(popOverVC.view)
         popOverVC.didMove(toParentViewController: self)
     }
+    
+    @IBAction func walkThrough(_ sender: Any) {
+        let popOverVC = UIStoryboard(name: "Walkthrough", bundle: nil).instantiateViewController(withIdentifier: "WalkthroughViewController") as! WalkthroughViewController
+        popOverVC.delegate = self
+        self.addChildViewController(popOverVC)
+        popOverVC.view.frame = self.view.frame
+        self.view.addSubview(popOverVC.view)
+        popOverVC.didMove(toParentViewController: self)
+    }
+    
     
     func startTimer() {
         diceRolling = true

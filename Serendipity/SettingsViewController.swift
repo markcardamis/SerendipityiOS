@@ -53,6 +53,12 @@ class SettingsViewController: UIViewController {
         }
     }
     
+    @IBAction func showWalkthrough(_ sender: Any) {
+        UserDefaults.standard.set(false, forKey:"walkthrough")
+        UserDefaults.standard.synchronize()
+        self.removeAnimate()
+    }
+    
     @IBAction func closePopUp(_ sender: UIButton) {
         self.removeAnimate()
     }
