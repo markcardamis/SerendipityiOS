@@ -58,12 +58,12 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate, Walkth
         } else {
             bOptionsText.isHidden = true
         }
-//        walkthroughRun = UserDefaults.standard.bool(forKey: "walkthrough")
-//        if (!walkthroughRun) {
-//            UserDefaults.standard.set(true, forKey:"walkthrough")
-//            UserDefaults.standard.synchronize()
-//            walkThrough((Any).self)
-//        }
+        walkthroughRun = UserDefaults.standard.bool(forKey: "walkthrough")
+        if (!walkthroughRun) {
+            UserDefaults.standard.set(true, forKey:"walkthrough")
+            UserDefaults.standard.synchronize()
+            walkThrough((Any).self)
+        }
     }
     
     func sendCompleted(done: Bool) {
@@ -86,7 +86,11 @@ class ViewController: UIViewController, LevelsDelegate, SettingsDelegate, Walkth
             UserDefaults.standard.synchronize()
             walkThrough((Any).self)
         }
-        
+    }
+    
+    func sendWalkthroughCompleted(done: Bool) {
+        UserDefaults.standard.set(true, forKey:"walkthrough")
+        UserDefaults.standard.synchronize()
     }
 
     override func didReceiveMemoryWarning() {

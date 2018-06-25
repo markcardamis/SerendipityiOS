@@ -7,7 +7,7 @@
 //
 
 protocol WalkthroughDelegate : class{
-    func sendCompleted(done: Bool)
+    func sendWalkthroughCompleted(done: Bool)
 }
 
 import UIKit
@@ -15,7 +15,7 @@ import UIKit
 class WalkthroughViewController: UIViewController {
     
     var levelNumber = 0
-    var levelHeadings = "Intro walkthrough"
+    var levelHeadings = "Screenshot intro"
     weak var delegate: WalkthroughDelegate?
     
     @IBOutlet weak var buttonUp: UIButton!
@@ -35,6 +35,7 @@ class WalkthroughViewController: UIViewController {
         self.levelPageControl.numberOfPages = 4
         self.levelPageControl.currentPage = 0
         showHideLevelButtons()
+        levelHeading.text = levelHeadings
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -56,10 +57,21 @@ class WalkthroughViewController: UIViewController {
         showHideLevelButtons()
     }
     
+    @IBAction func levelUpButton(_ sender: Any) {
+        levelNumber = levelNumber + 1
+        showHideLevelButtons()
+    }
+    
     @IBAction func SwiftLeft(_ sender: UISwipeGestureRecognizer) {
         levelNumber = levelNumber + 1
         showHideLevelButtons()
     }
+    
+    @IBAction func levelDownButton(_ sender: Any) {
+        levelNumber = levelNumber - 1
+        showHideLevelButtons()
+    }
+    
     @IBAction func levelDown(_ sender: UIButton) {
         levelNumber = levelNumber - 1
         showHideLevelButtons()
@@ -73,8 +85,10 @@ class WalkthroughViewController: UIViewController {
     func showHideLevelButtons() {
         if (levelNumber <= 0) {
             buttonDown.isHidden = true
+            buttonUp.isHidden = false
             levelNumber = 0
-        } else  if (levelNumber >= 3) {
+        } else if (levelNumber >= 3) {
+            buttonDown.isHidden = false
             buttonUp.isHidden = true
             levelNumber = 3
         } else {
@@ -93,6 +107,14 @@ class WalkthroughViewController: UIViewController {
             self.view.alpha = 1.0
             self.view.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
         });
+        
+        self.buttonDown.alpha = 1
+        self.buttonUp.alpha = 1
+        UIView.animate(withDuration: 0.5, delay: 0.5,
+                       options: [UIViewAnimationOptions.curveLinear,                                                                UIViewAnimationOptions.repeat,                                                                 UIViewAnimationOptions.autoreverse], animations: {
+            self.buttonDown.alpha = 0.6
+            self.buttonUp.alpha = 0.6
+        }, completion: nil)
     }
     
     func removeAnimate()
@@ -103,7 +125,7 @@ class WalkthroughViewController: UIViewController {
         }, completion:{(finished : Bool)  in
             if (finished)
             {
-                self.delegate?.sendCompleted(done: true)
+                self.delegate?.sendWalkthroughCompleted(done: true)
                 self.view.removeFromSuperview()
             }
         });
