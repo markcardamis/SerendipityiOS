@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         UserDefaults.standard.register(defaults: ["identifier" : true])
         UserDefaults.standard.register(defaults: ["walkthrough" : false])
-        UserDefaults.standard.set(true, forKey: "identifier")
-        UserDefaults.standard.set(false, forKey: "walkthrough")
+        //UserDefaults.standard.set(true, forKey: "identifier")
+        //UserDefaults.standard.set(false, forKey: "walkthrough")
         return true
     }
 
